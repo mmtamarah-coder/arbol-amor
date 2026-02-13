@@ -4,7 +4,41 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nuestro Árbol 💖</title>
+// Árbol
+const canvas = document.getElementById("arbol");
+const ctx = canvas.getContext("2d");
 
+canvas.width = 400;
+canvas.height = 400;
+
+// Fondo cielo
+ctx.fillStyle = "#b3e5fc";
+ctx.fillRect(0, 0, 400, 400);
+
+// Suelo
+ctx.fillStyle = "#4caf50";
+ctx.fillRect(0, 330, 400, 70);
+
+// Tronco
+ctx.fillStyle = "#8b5a2b";
+ctx.fillRect(180, 250, 40, 100);
+
+// Hojas
+function dibujarHoja(x, y, color) {
+  ctx.beginPath();
+  ctx.arc(x, y, 25, 0, Math.PI * 2);
+  ctx.fillStyle = color;
+  ctx.fill();
+}
+
+const colores = ["#ff6b6b", "#ffb347", "#77dd77", "#c084fc", "#ff85a2"];
+
+for (let i = 0; i < 50; i++) {
+  let x = 120 + Math.random() * 160;
+  let y = 80 + Math.random() * 180;
+  let color = colores[Math.floor(Math.random() * colores.length)];
+  dibujarHoja(x, y, color);
+}
 <style>
 body {
   margin: 0;
